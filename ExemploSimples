@@ -1,0 +1,44 @@
+//Exemplo completo
+import javax.swing.*;
+import java.awt.*;
+import java.awt.event.*;
+
+public class ExemploEvento extends JFrame {
+
+    private JTextField txtNome;
+    private JButton btnEnviar;
+
+    public ExemploEvento() {
+
+        setTitle("Exemplo de Evento");
+        setSize(400, 200);
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setLayout(new FlowLayout());
+
+        JLabel lblNome = new JLabel("Digite seu nome:");
+        txtNome = new JTextField(20);
+        btnEnviar = new JButton("Enviar");
+
+        add(lblNome);
+        add(txtNome);
+        add(btnEnviar);
+
+        btnEnviar.addActionListener(new ActionListener() {
+
+            @Override //significa sobrecarga ou polimorfismo
+            public void actionPerformed(ActionEvent e) {
+
+                String nome = txtNome.getText();
+                JOptionPane.showMessageDialog(
+                    null, "Olá, " + nome + "!\nSeja bem-vindo!" );
+            }
+        });
+
+        setVisible(true);
+    }
+
+    public static void main(String[] args) {
+
+        new ExemploEvento();
+    }
+}
