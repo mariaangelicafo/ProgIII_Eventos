@@ -1,0 +1,95 @@
+import javax.swing.*;
+public class EscolhaFilme {
+
+    static JRadioButton rbAcao, rbComedia, rbFiccao;
+    static JCheckBox chkLegenda, chkAudio, chkTrailer;
+    static JTextArea resultado;
+
+    public static void main(String[] args) {
+
+        JFrame tela = new JFrame("Escolha do Filme");
+        tela.setSize(450, 400);
+        tela.setLayout(null);
+        tela.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
+        JLabel lbl = new JLabel("Escolha o gênero:");
+        lbl.setBounds(20, 20, 150, 30);
+        tela.add(lbl);
+
+        rbAcao = new JRadioButton("Ação");
+        rbAcao.setBounds(20, 50, 80, 30);
+        tela.add(rbAcao);
+
+        rbComedia = new JRadioButton("Comédia");
+        rbComedia.setBounds(100, 50, 100, 30);
+        tela.add(rbComedia);
+
+        rbFiccao = new JRadioButton("Ficção Científica");
+        rbFiccao.setBounds(200, 50, 150, 30);
+        tela.add(rbFiccao);
+
+        ButtonGroup grupo = new ButtonGroup();
+        grupo.add(rbAcao);
+        grupo.add(rbComedia);
+        grupo.add(rbFiccao);
+
+        chkLegenda = new JCheckBox("Legendas");
+        chkLegenda.setBounds(20, 100, 100, 30);
+        tela.add(chkLegenda);
+
+        chkAudio = new JCheckBox("Áudio original");
+        chkAudio.setBounds(120, 100, 120, 30);
+        tela.add(chkAudio);
+
+        chkTrailer = new JCheckBox("Trailer");
+        chkTrailer.setBounds(240, 100, 100, 30);
+        tela.add(chkTrailer);
+
+        JButton botao = new JButton("Gerar recomendação");
+        botao.setBounds(100, 150, 220, 35);
+        tela.add(botao);
+
+        resultado = new JTextArea();
+        resultado.setBounds(20, 200, 390, 120);
+        tela.add(resultado);
+
+        // Evento do botão
+        botao.addActionListener(e -> gerarRecomendacao());
+
+        tela.setVisible(true);
+    }
+
+    // Método que trata o evento
+    public static void gerarRecomendacao() {
+
+        String genero = "";
+
+        if (rbAcao.isSelected()) {
+            genero = "Ação";
+        } else if (rbComedia.isSelected()) {
+            genero = "Comédia";
+        } else if (rbFiccao.isSelected()) {
+            genero = "Ficção Científica";
+        }
+
+        String preferencias = "";
+
+        if (chkLegenda.isSelected()) {
+            preferencias += "Legendas ";
+        }
+
+        if (chkAudio.isSelected()) {
+            preferencias += "Áudio original ";
+        }
+
+        if (chkTrailer.isSelected()) {
+            preferencias += "Trailer";
+        }
+
+        resultado.setText(
+            "Gênero: " + genero +
+            "\nPreferências: " + preferencias +
+            "\n\nBoa sessão! "
+        );
+    }
+}
