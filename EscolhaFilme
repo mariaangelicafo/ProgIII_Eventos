@@ -13,7 +13,7 @@ public class EscolhaFilme {
         tela.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
         JLabel lbl = new JLabel("Escolha o gênero:");
-        lbl.setBounds(20, 20, 150, 30);
+        lbl.setBounds(20, 20, 150, 30);//(posição vertical, horizontal, largura, altura);
         tela.add(lbl);
 
         rbAcao = new JRadioButton("Ação");
